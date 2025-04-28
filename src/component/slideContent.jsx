@@ -9,6 +9,7 @@ import { GlobalContext } from "../globalContext/context";
 import domo from "ryuu.js";
 import { BsBarChartLine } from "react-icons/bs";
 import { FaIndianRupeeSign } from "react-icons/fa6";
+import LineCharts from "@/chart/LineChart";
 
 const SlideContent = ({ brand, subCategoryName, productName }) => {
     console.log("brand", productName);
@@ -361,7 +362,7 @@ const SlideContent = ({ brand, subCategoryName, productName }) => {
                             </h1>
                             {/* <h4 className="font-semibold text-xl mt-2">Last Year</h4> Added mt-2 */}
                             {Array.isArray(line2) && line2.length > 0 && (
-                                <LineChart1 datas={line1} />
+                                <LineCharts datas={line1} />
                             )}
                         </div>
 

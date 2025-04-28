@@ -52,7 +52,7 @@ const Product = () => {
       {/* Back Button */}
       <button
         onClick={handleBack}
-        className="mb-4 text-sm px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition cursor-pointer"
+        className="mb-2 text-sm px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition cursor-pointer"
       >
         ← Back
       </button>

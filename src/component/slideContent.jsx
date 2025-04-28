@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GlobalContext } from "../globalContext/context";
 import domo from "ryuu.js";
 import { BsBarChartLine } from "react-icons/bs";
@@ -10,7 +10,7 @@ import { DoubleBarChart } from "@/chart/DoubleBarChart";
 import { LineChartTwo } from "@/chart/LineChart2";
 import { HorizontalBarChart } from "@/chart/HorzontialBarChart";
 
-const SlideContent = ({ brand, subCategoryName, productName }) => {
+const SlideContent = ({ subCategoryName, productName }) => {
     
 
     const [totalSalesByCountry, setTotalSalesByCountry] = useState([]);
@@ -23,10 +23,10 @@ const SlideContent = ({ brand, subCategoryName, productName }) => {
     const [salesGender, setSalesGender] = useState([]);
 
 
-    const {
-        state: { category, product },
-        // setState: { setActiveIndex, setProduct },
-    } = useContext(GlobalContext);
+    // const {
+    //     state: { category, product },
+    //     // setState: { setActiveIndex, setProduct },
+    // } = useContext(GlobalContext);
     // console.log(".....................", category);
 
     useEffect(() => {
@@ -292,15 +292,26 @@ const SlideContent = ({ brand, subCategoryName, productName }) => {
         }
     }, [productName]);
 
+    const formatNumber = (num) => {
+        if (num >= 1000000000) {
+          return (num / 1000000000).toFixed(1) + 'B'; // Converts to billions with one decimal place
+        } else if (num >= 1000000) {
+          return (num / 1000000).toFixed(1) + 'M'; // Converts to millions with one decimal place
+        } else if (num >= 1000) {
+          return (num / 1000).toFixed(1) + 'K'; // Converts to thousands with one decimal place
+        }
+        return new Intl.NumberFormat('en-US').format(num); // Default formatting
+      };
+
     return (
         <div className="relative w-full h-full">
             {/* Background Image */}
-            <img
+            {/* <img
                 src={`src/assets/products/${category}/${subCategoryName}.png`}
                 // src="src/assets/products/Hair Styling & Treatments/Metal Detox Anti-Breakage Pre-Shampoo Treatment.png" 
                 alt="Background"
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 opacity-30 w-full h-full object-contain"
-            />
+            /> */}
 
 
             {/* Overlay Content */}
@@ -310,38 +321,45 @@ const SlideContent = ({ brand, subCategoryName, productName }) => {
                 <div className="flex flex-col gap-2 mb-4 pb-3 pt-4 text-stone-700 font-semibold">
                     <div className="grid grid-cols-4 gap-2">
                         <div className="bg-white/20 p-2 rounded-lg h-[150px]">
-                            <h1 className="flex items-center gap-2 text-xl" style={{marginBottom: '20px'}}>
-                                <BsBarChartLine className="w-5 h-5" />
-                                <span className="text-[#dddbc5]">Total Sales</span>
-                            </h1>
+                            <div className="flex justify-between items-center" style={{marginBottom: '20px'}}>
+                                <h1 className="text-xl text-[#dddbc5]" >
+                                    Total Sales
+                                </h1>
+                                <div className="text-xl text-white">{formatNumber(totalSalesByMonth[1]?.reduce((a, b) => Number(a) + Number(b), 0) || 0)}</div>
+                            </div>
 
                             {Array.isArray(totalSalesByMonth) && totalSalesByMonth.length > 0 && (
                                 <LineCharts datas={totalSalesByMonth} />
                             )}
                         </div>
                         <div className="bg-white/20  p-2 rounded-lg h-[150px]">
-                            <h1 className="flex items-center gap-2 text-xl" style={{marginBottom: '20px'}}>
-                                <FaIndianRupeeSign className="w-5 h-5" />
-                                <span className="text-[#dddbc5]">Total Qty</span>
+                        <div className="flex justify-between items-center" style={{marginBottom: '20px'}}>
+                            <h1 className="text-xl text-[#dddbc5]">
+                                Total Qty
                             </h1>
+                            <div className="text-xl text-white">{formatNumber(qtyTrend[1]?.reduce((a, b) => Number(a) + Number(b), 0) || 0)}</div>
+                        </div>
                             {Array.isArray(qtyTrend) && qtyTrend.length > 0 && (
                                 <LineCharts datas={qtyTrend} />
                             )}
                         </div>
                         <div className="bg-white/20  p-2 rounded-lg h-[150px]">
-                            <h1 className="flex items-center gap-2 text-xl" style={{marginBottom: '20px'}}>
-                                <FaIndianRupeeSign className="w-5 h-5" />
-                                <span className="text-[#dddbc5]">Profit</span>
+                        <div className="flex justify-between items-center" style={{marginBottom: '20px'}}>
+                            <h1 className="text-xl text-[#dddbc5]">
+                                Profit
                             </h1>
+                            <div className="text-xl text-white">{formatNumber(profitTrend[1]?.reduce((a, b) => Number(a) + Number(b), 0) || 0)}</div>
+                        </div>
                             {Array.isArray(profitTrend) && profitTrend.length > 0 && (
                                 <LineCharts datas={profitTrend} />
                             )}
                         </div>
                         <div className="bg-white/20  p-2 rounded-lg h-[150px]">
-                            <h1 className="flex items-center gap-2 text-xl" style={{marginBottom: '20px'}}>
-                                <FaIndianRupeeSign className="w-5 h-5" />
-                                <span className="text-[#dddbc5]">Gender</span>
-                            </h1>
+                            <div className="flex justify-between items-center" style={{marginBottom: '20px'}}>
+                                <h1 className="text-xl text-[#dddbc5]">
+                                    Gender
+                                </h1>
+                            </div>
                             {/* <h4 className="font-semibold text-xl mt-2">Last Year</h4> Added mt-2 */}
                             {Array.isArray(salesGender) && salesGender.length > 0 && (
                                 <HorizontalBarChart data={salesGender} />

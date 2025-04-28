@@ -10,11 +10,11 @@ import {
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#ffb3b3",
+    color: "#3b3b3b",
   },
   mobile: {
     label: "Mobile",
-    color: "#b3b3ff",
+    color: "#de0f3f",
   },
 }
 

@@ -1,4 +1,4 @@
-import backgroundImage from '../assets/background.png';
+// import backgroundImage from '../assets/background.png';
 import loreal from '../assets/loreal1.jpg';
 import freck_beauty from '../assets/freck_beauty1.jpg';
 

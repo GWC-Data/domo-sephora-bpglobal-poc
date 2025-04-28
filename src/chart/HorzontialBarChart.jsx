@@ -8,11 +8,11 @@ import {
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#ffb3b3",
+    color: "#3b3b3b",
   },
   mobile: {
     label: "Mobile",
-    color: "#b3b3ff",
+    color: "#3b3b3b",
   },
   label: {
     color: "#ffb3b3",
@@ -50,7 +50,7 @@ export function HorizontalBarChart({ data }) {
           tickLine={false}
           tickMargin={8}
           axisLine={false}
-          style={{ fill: "#000000", fontSize: 12 }}
+          style={{ fill: "#ffffff", fontSize: 12 }}
         />
         <XAxis type="number" hide />
         <ChartTooltip
@@ -77,6 +77,7 @@ export function HorizontalBarChart({ data }) {
             dataKey="desktop"
             position="insideRight"
             offset={3}
+            style={{ fill: "#ffffff" }}
             className="fill-foreground"
             fontSize={12}
           />

@@ -10,7 +10,7 @@ export function PieCharts({ data }) {
   const chartData = data[0]?.map((category, index) => ({
     category: category,  // Category name like "Instore Purchase", "Sephora Ecom"
     sales: Number(data[1][index]),  // Sales values converted to numbers
-    fill: index % 2 === 0 ? "#ffb3b3" : "#b3b3ff", 
+    fill: index % 2 === 0 ? "#de0f3f" : "#3b3b3b", 
   }));
 
   const chartConfig = {

@@ -4,11 +4,11 @@ import { ChartContainer, ChartTooltipContent } from "@/components/ui/chart";
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#ffb3b3",
+    color: "#3b3b3b",
   },
   mobile: {
     label: "Mobile",
-    color: "#ffb3b3",
+    color: "#3b3b3b",
   },
 };
 
@@ -18,8 +18,6 @@ export function LineChartTwo({ datas }) {
     month,
     desktop: Number(datas[1][index]), // Convert string to number
   }));
-
-  console.log("Formatted Chart Data:", chartData);  // Log formatted data
 
   // Number formatting function
   const formatNumber = (num) => {
@@ -43,7 +41,7 @@ export function LineChartTwo({ datas }) {
           right: 16,
         }}
       >
-        <CartesianGrid vertical={false} />
+        {/* <CartesianGrid vertical={false} /> */}
         <XAxis
           dataKey="month"
           tickLine={false}
@@ -56,7 +54,6 @@ export function LineChartTwo({ datas }) {
         <Tooltip
           cursor={false}
           content={({ payload }) => {
-            console.log("Payload:", payload);  // Log the payload to see if it's populated
             if (payload && payload.length > 0) {
               const { month, desktop } = payload[0].payload;
               return (
@@ -81,9 +78,10 @@ export function LineChartTwo({ datas }) {
           }}
         >
 
-<LabelList
+              <LabelList
                 position="top"
                 offset={12}
+                style={{ fill: "#ffffff" }}
                 formatter={(value) => formatNumber(value)}
                 className="fill-foreground"
                 fontSize={12}

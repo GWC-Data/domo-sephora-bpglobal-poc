@@ -9,11 +9,11 @@ import {
 const chartConfig = {
   desktop: {
     label: "Desktop",
-    color: "#ffb3b3",
+    color: "#de0f3f",
   },
   mobile: {
     label: "Mobile",
-    color: "#ffb3b3",
+    color: "#de0f3f",
   },
 };
 
@@ -72,8 +72,8 @@ export function BarCharts({ datas }) {
             position="top"
             offset={10}
             fontSize={12}
+            style={{ fill: "#ffffff" }}
             formatter={(value) => formatNumber(value)}
-            style={{ fill: "#ffb3b3" }}
           />
         </Bar>
       </BarChart>

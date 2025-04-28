@@ -7,7 +7,7 @@ const SlidingPanels = ({ brand, subCategories }) => {
   const slidesContainerRef = useRef(null);
 
   const {
-    state: { activeIndex },
+    state: { activeIndex, category },
     setState: { setActiveIndex, setProduct },
   } = useContext(GlobalContext);
 
@@ -58,7 +58,12 @@ const SlidingPanels = ({ brand, subCategories }) => {
           {subCategories.map((subCategory, index) => (
             <li 
               key={index} 
-              className={`slide bg-black ${index === activeIndex ? 'active' : ''}`}
+              className={`slide bg-red-100 ${index === activeIndex ? 'active' : ''}`}
+              style={{
+                backgroundImage: `url(${`../assets/products/${category}/${subCategory.name}.png`})`, // Set background image dynamically
+                backgroundSize: 'cover', // Optional, adjust the background size to cover the whole area
+                backgroundPosition: 'center', // Optional, ensure the background is centered
+              }}
             >
               <a 
                 href="#" 

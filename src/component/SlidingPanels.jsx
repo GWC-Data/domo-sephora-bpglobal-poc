@@ -50,7 +50,6 @@ const SlidingPanels = ({ brand, subCategories, subCategoryName }) => {
       window.removeEventListener('resize', handleResizeEnd);
     };
   }, []);
-
   return (
     <div className="container">
       <div className="container-slides">
@@ -63,7 +62,7 @@ const SlidingPanels = ({ brand, subCategories, subCategoryName }) => {
               {/* {(console.log("subcategory Image", category))}
               {(console.log("subcategory name", subCategoryName))} */}
               <img
-                src={`src/assets/products/${category}/${subCategory.name}.png`}
+                src={`https://raw.githubusercontent.com/GWC-Data/domo-sephora-bpglobal-poc/refs/heads/main/src/assets/products/${encodeURIComponent(category)}/${encodeURIComponent(subCategory.name)}.png`}
                 alt={subCategory.name}
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 opacity-40 w-40 h-[500px] object-cover"
               />

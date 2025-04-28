@@ -52,13 +52,13 @@ const Product = () => {
       {/* Back Button */}
       <button
         onClick={handleBack}
-        className="mb-4 text-sm px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition cursor-pointer"
+        className="mb-2 text-sm px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition cursor-pointer"
       >
         ← Back
       </button>
 
       <div className="flex flex-col items-center gap-4">
-        <h2 className={`text-3xl font-bold ${colors.text}`}>
+        <h2 className={`text-3xl font-bold ${colors.text} text-center`}>
           {brand} - {category}
         </h2>
         {/* {products.length > 0 ? (

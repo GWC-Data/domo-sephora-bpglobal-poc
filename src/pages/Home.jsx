@@ -291,7 +291,7 @@ const Home = () => {
                           <div className="mt-2 mb-3">
                             {/* Sales YTD */}
                             <div className="flex justify-between items-center text-sm">
-                              <span>Sales YTD:</span>
+                              <span>CY Sales YTD:</span>
                               <span className="font-semibold">
                                 {new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(categoryObj.salesYTD)}
                               </span>
@@ -299,7 +299,7 @@ const Home = () => {
 
                             {/* Previous Sales YTD */}
                             <div className="flex justify-between items-center text-sm">
-                              <span>Previous Sales YTD:</span>
+                              <span>PY Sales YTD:</span>
                               <span className="font-semibold">
                                 {new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(categoryObj.previousSalesYTD)}
                               </span>

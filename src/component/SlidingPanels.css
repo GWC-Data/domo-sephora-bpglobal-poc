@@ -36,7 +36,48 @@
 
 
 .slide a.action {
-  margin-top: 90px;
+  margin-top: 16vh;
+  transform: rotate(90deg);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  display: flex;/* Global Styles */
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Container Styles */
+
+.container {
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+/* Slide Styles */
+
+.slides {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.slide {
+  list-style-type: none;
+  height: 560px;
+  width: 5%;
+  overflow: hidden;
+  position: relative;
+  transition: all 500ms linear;
+}
+
+.slide a.action {
+  margin-top: 16vh;
   transform: rotate(90deg);
   font-size: 1.5rem;
   font-weight: 700;
@@ -55,10 +96,87 @@
   background-color: #484a4c;
 }
 
+.slide-content .header {
+  font-size: x-large;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.active {
+  width: 100%;
+}
+
+.active a.action {
+  display: none;
+}
+
+/* Responsive Design */
+
+@media (max-width: 480px) {
+  .slides {
+    display: block;
+  }
+  
+  .slide {
+    width: 100% !important;
+    margin-bottom: 15px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .slide-content {
+    width: 100% !important;
+    padding: 25px;
+    font-size: 95%;
+  }
+}
+
+/* Chart Styles */
+
+.pie {
+  height: 85% !important;
+}
+
+.bar1 {
+  margin-top: 12px !important;
+  padding-bottom: 2px;
+}
+
+.bar2 {
+  height: 85px !important;
+}
+
+.line1 {
+  height: 85px !important;
+}
+
+.line2 {
+  margin-top: 12px !important;
+  padding-bottom: 2px;
+}
+
+.hgt {
+  height: 145px !important;
+}
+  justify-content: center;
+  text-transform: uppercase;
+  text-wrap: nowrap;
+}
+
+.slide-content {
+  display: block;
+  width: 100%;
+  padding: 10px 20px 20px 20px;
+  color: #fff;
+  background-color: #484a4c;
+
+}
+
 .slide-content .header{
   font-size: x-large;
   font-weight: 600;
   margin-left: 5px;
+  
 }
 
 .active {

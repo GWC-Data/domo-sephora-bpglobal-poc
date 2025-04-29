@@ -3,11 +3,11 @@ import SlideContent from './slideContent';
 import './SlidingPanels.css';
 import { GlobalContext } from '../globalContext/context';
 
-const SlidingPanels = ({ brand, subCategories }) => {
+const SlidingPanels = ({ brand, subCategories, subCategoryName }) => {
   const slidesContainerRef = useRef(null);
 
   const {
-    state: { activeIndex },
+    state: { activeIndex, category },
     setState: { setActiveIndex, setProduct },
   } = useContext(GlobalContext);
 
@@ -30,7 +30,7 @@ const SlidingPanels = ({ brand, subCategories }) => {
 
   useEffect(() => {
     checkWidth();
-    
+
     const handleResize = () => {
       checkWidth();
     };
@@ -56,32 +56,39 @@ const SlidingPanels = ({ brand, subCategories }) => {
       <div className="container-slides">
         <ul className="slides" ref={slidesContainerRef}>
           {subCategories.map((subCategory, index) => (
-            <li 
-              key={index} 
+            <li
+              key={index}
               className={`slide bg-black ${index === activeIndex ? 'active' : ''}`}
             >
-              <a 
-                href="#" 
-                className="action" 
+              {/* {(console.log("subcategory Image", category))}
+              {(console.log("subcategory name", subCategoryName))} */}
+              <img
+                src={`src/assets/products/${category}/${subCategory.name}.png`}
+                alt={subCategory.name}
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 opacity-90 w-40 h-[500px] object-cover"
+              />
+              <a
+                href="#"
+                className="action"
                 onClick={(e) => {
                   e.preventDefault();
                   setActiveIndex(index);
                   // Optionally set subCategory as active to display it in SlideContent
-                  setProduct(subCategory.name);  
+                  setProduct(subCategory.name);
                 }}
               >
                 {subCategory.name}
               </a>
-              
+
               {/* If active index matches, display the slide content */}
-                {/* If active index matches, display the slide content */}
-                {index === activeIndex && (
+              {/* If active index matches, display the slide content */}
+              {index === activeIndex && (
                 <div className="slide-content h-full">
                   {/* Display the first product of the selected subCategory */}
                   {subCategory.products && subCategory.products.length > 0 && (
-                    <SlideContent 
-                      brand={brand} 
-                      subCategoryName={subCategory.name} 
+                    <SlideContent
+                      brand={brand}
+                      subCategoryName={subCategory.name}
                       productName={subCategory.products[0].name}  // Pass the first product
                     />
                   )}

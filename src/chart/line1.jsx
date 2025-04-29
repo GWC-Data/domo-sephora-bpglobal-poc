@@ -38,7 +38,7 @@ const LineChart1 = ({ datas }) => {
     datasets: [
       {
         data: datas[1],
-        borderColor: '#de0f3f',             // 🔥 Line color -> Red
+        borderColor: '#de0f3f',             
         tension: 0.4,
         fill: false,
         pointBackgroundColor: 'transparent',     // No point background color
